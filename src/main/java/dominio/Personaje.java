@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.DefaultListModel;
+
 /** Clase Personaje.
  * La cual sirve de base para la creacion de las distintas Razas.
  */
@@ -442,7 +443,7 @@ public abstract class Personaje extends MadreDeTodo implements Peleable, Seriali
 	}
 	/**
 	 * Método que retorna un entero.
-	 * Dpendiendo del resultado de las comparaciones entre
+	 * Dependiendo del resultado de las comparaciones entre
 	 *  el Personaje llamador y el argumento que puede ser instancia
 	 *  de Personaje o de NPC (NonPlayableCharacter)
 	 * La probabilidad de golpe critico depende de la casta del Personaje
@@ -453,6 +454,7 @@ public abstract class Personaje extends MadreDeTodo implements Peleable, Seriali
 	 * @param atacado Instancia de Persona o NPC la cual será atacada
 	 * @return Retorna si el ataque fue realizado con éxito o no.
 	 */
+	
 	@Override
 	public final int atacar(final Peleable atacado) {
 		if (salud == 0) {
@@ -745,6 +747,7 @@ public abstract class Personaje extends MadreDeTodo implements Peleable, Seriali
 				&& (this.experiencia >= Personaje.
 				getTablaDeNiveles()[this.getNivel() + 1] + acumuladorExperiencia)) {
 			acumuladorExperiencia += Personaje.getTablaDeNiveles()[this.getNivel() + 1];
+			this.puntosSkill += 3;
 			this.aumentarNivel();
 			this.modificarAtributos();
 			this.saludTope += SALUDTOPESUBIRN;
