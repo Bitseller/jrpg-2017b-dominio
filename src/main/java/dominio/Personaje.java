@@ -10,6 +10,10 @@ import javax.swing.DefaultListModel;
  * La cual sirve de base para la creacion de las distintas Razas.
  */
 
+/*Se agrego el atributo de puntosSkill ya que no se poseia registro
+ * de estos valores anteriormente, ademas agregamos los Set y Get para
+ * acceder a ellos posteriormente.
+ */
 public abstract class Personaje extends MadreDeTodo implements Peleable, Serializable {
 	/**
 	 * Salud del personaje.
@@ -21,6 +25,14 @@ public abstract class Personaje extends MadreDeTodo implements Peleable, Seriali
 	private int energia;
 	/**
 	 * Cantidad de habilidades que posee el personaje dada su casta.
+	 */
+	
+	private int puntosSkill;
+	/**
+	 * @return the puntosSkill
+	 */
+	/**
+	 * Cantidad de puntos que posee el personaje acumulados por nivel.
 	 */
 	private static final int CANTHABILIDADESCASTA = 3;
 	/**
@@ -299,7 +311,18 @@ public abstract class Personaje extends MadreDeTodo implements Peleable, Seriali
 	}
 
 
-
+	/** Retorna un entero con los puntos actuales para asignar del personaje.
+	 * @return puntos de skill disponibles
+	 */
+	public int getPuntosSkill() {
+		return puntosSkill;
+	}
+	/** Metodo para sobreescribir el atributo de puntos de skill disponiles.
+	 * @param puntos de skill correspondientes.
+	 */
+	public void setPuntosSkill(int puntosSkill) {
+		this.puntosSkill = puntosSkill;
+	}
 
 	/**Retorna un entero con el ataque del personaje.
 	 * @return ataque del personaje.
