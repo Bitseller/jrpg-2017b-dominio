@@ -65,8 +65,17 @@ public class NonPlayableCharacter extends MadreDeTodo implements Peleable {
 	 * Multiplicador defensa del NPC.
 	 */
 	private static final int MULTIPLICADORD = 1;
-
+	
+	
+	private static final int SALUDTOPEINICIAL = 60;
+	
 	/**
+	 * Salud tope del NPC.
+	 */
+	private int saludTope;
+	
+	/**
+	 * 
 	 * Constructor de la Clase.
 	 * Dependiendo de la dificultad que se pasa por parámetro al
 	 * constructor, aumentará o disminuirá el valor de los
@@ -85,7 +94,7 @@ public class NonPlayableCharacter extends MadreDeTodo implements Peleable {
 		} else {
 			dificultad = dificultadNPC;
 		}
-
+		saludTope = SALUDTOPEINICIAL;
 		this.aumentarFuerza(MODIFICADORBASEF * (dificultad + 1) +
 				(nivel - 1) * MULTIPLICADORF * (dificultad + 1));
 		this.salud = MODIFICADORBASES * (dificultad + 1) + (nivel - 1) * MULTIPLICADORS * (dificultad + 1);
@@ -211,6 +220,10 @@ public class NonPlayableCharacter extends MadreDeTodo implements Peleable {
 	@Override
 	public final int getMagia() {
 		return 0;
+	}
+
+	public final int getSaludTope() {
+		return saludTope;
 	}
 }
 
