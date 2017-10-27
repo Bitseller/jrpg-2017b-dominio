@@ -8,6 +8,10 @@ package dominio;
  * Implementa la Interfaz Peleable.
  */
 
+/**
+ * @author avorraim
+ *
+ */
 public class NonPlayableCharacter extends MadreDeTodo implements Peleable {
 	/**
 	 * Numero que sirve de argumento para obtener la dificultad.
@@ -65,17 +69,15 @@ public class NonPlayableCharacter extends MadreDeTodo implements Peleable {
 	 * Multiplicador defensa del NPC.
 	 */
 	private static final int MULTIPLICADORD = 1;
-	
-	
+	/**
+	 * Salud tope del npc
+	 */
 	private static final int SALUDTOPEINICIAL = 60;
-	
 	/**
 	 * Salud tope del NPC.
 	 */
 	private int saludTope;
-	
 	/**
-	 * 
 	 * Constructor de la Clase.
 	 * Dependiendo de la dificultad que se pasa por parámetro al
 	 * constructor, aumentará o disminuirá el valor de los
@@ -95,11 +97,11 @@ public class NonPlayableCharacter extends MadreDeTodo implements Peleable {
 			dificultad = dificultadNPC;
 		}
 		saludTope = SALUDTOPEINICIAL;
-		this.aumentarFuerza(MODIFICADORBASEF * (dificultad + 1) +
-				(nivel - 1) * MULTIPLICADORF * (dificultad + 1));
+		this.aumentarFuerza(MODIFICADORBASEF * (dificultad + 1)
+				+ (nivel - 1) * MULTIPLICADORF * (dificultad + 1));
 		this.salud = MODIFICADORBASES * (dificultad + 1) + (nivel - 1) * MULTIPLICADORS * (dificultad + 1);
-		this.aumentarDefensa(MODIFICADORBASED * (dificultad + 1) +
-				(nivel - 1) * MULTIPLICADORD * (dificultad + 1));
+		this.aumentarDefensa(MODIFICADORBASED * (dificultad + 1)
+				+ (nivel - 1) * MULTIPLICADORD * (dificultad + 1));
 	}
 
 	/**
@@ -222,6 +224,10 @@ public class NonPlayableCharacter extends MadreDeTodo implements Peleable {
 		return 0;
 	}
 
+	/**
+	 * Retorna la salud tope del npc
+	 * @return int saludTope
+	 */
 	public final int getSaludTope() {
 		return saludTope;
 	}
