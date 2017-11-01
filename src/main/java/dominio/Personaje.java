@@ -28,7 +28,6 @@ public abstract class Personaje extends MadreDeTodo implements Peleable, Seriali
 	/**
 	 * Cantidad de habilidades que posee el personaje dada su casta.
 	 */
-
 	private int puntosSkill;
 	/**
 	 * @return the puntosSkill
@@ -40,6 +39,7 @@ public abstract class Personaje extends MadreDeTodo implements Peleable, Seriali
 	/**
 	 * Cantidad de habilidades que posee el personaje dada su raza.
 	 */
+	private static final int TRESPUNTOSDESKILL = 3;
 	private static final int CANTHABILIDADESRAZA = 2;
 	/**
 	 * Cantidad de niveles.
@@ -393,7 +393,7 @@ public abstract class Personaje extends MadreDeTodo implements Peleable, Seriali
 	 */
 	public final void setClan(final Alianza clan) {
 		this.clan = clan;
-		clan.añadirPersonaje(this);
+		clan.crearPersonaje(this);
 	}
 
 	/**
@@ -507,7 +507,7 @@ public abstract class Personaje extends MadreDeTodo implements Peleable, Seriali
 	 * @return Retorna el golpe critico que puede realizar el personaje.
 	 */
 	public final int golpeCritico() {
-		return (int) (this.ataque * this.getCasta().getDañoCritico());
+		return (int) (this.ataque * this.getCasta().getAtaqueCritico());
 	}
 
 	/**
@@ -616,7 +616,7 @@ public abstract class Personaje extends MadreDeTodo implements Peleable, Seriali
 	@Override
 	public final int serAtacado(int danio) {
 
-		if (this.getRandom().nextDouble() >= this.getCasta().getProbabilidadEvitarDaño()) {
+		if (this.getRandom().nextDouble() >= this.getCasta().getProbabilidadEvitarAtaque()) {
 			danio -= this.getDefensa();
 			if (danio > 0) {
 				if (salud <= danio) {
@@ -717,7 +717,7 @@ public abstract class Personaje extends MadreDeTodo implements Peleable, Seriali
 	 */
 	public final void crearAlianza(final String nombreAlianza) {
 		this.clan = new Alianza(nombreAlianza);
-		this.clan.añadirPersonaje(this);
+		this.clan.crearPersonaje(this);
 	}
 
 	/**
@@ -745,12 +745,12 @@ public abstract class Personaje extends MadreDeTodo implements Peleable, Seriali
 		if (this.clan == null) {
 			Alianza a = new Alianza("Alianza 1");
 			this.clan = a;
-			a.añadirPersonaje(this);
+			a.crearPersonaje(this);
 		}
 
 		if (nuevoAliado.clan == null) {
 			nuevoAliado.clan = this.clan;
-			this.clan.añadirPersonaje(nuevoAliado);
+			this.clan.crearPersonaje(nuevoAliado);
 			return true;
 		} else {
 			return false;
@@ -791,16 +791,15 @@ public abstract class Personaje extends MadreDeTodo implements Peleable, Seriali
 	 * aumentar el nivel del personaje.
 	 */
 	public final void subirNivel() {
-
 		int acumuladorExperiencia = 0;
 		if (this.getNivel() == NIVELMAXIMO) {
 			return;
 		}
-		while (this.getNivel() != NIVELMAXIMO
-				&& (this.experiencia >= Personaje.getTablaDeNiveles()[this.getNivel() + 1] 
-						+ acumuladorExperiencia)) {
+		while (this.getNivel() != NIVELMAXIMO 
+			&& (this.experiencia >= Personaje.getTablaDeNiveles()[this.getNivel() + 1] 
+			+ acumuladorExperiencia)) 	{
 			acumuladorExperiencia += Personaje.getTablaDeNiveles()[this.getNivel() + 1];
-			this.puntosSkill += 3;
+			this.puntosSkill += TRESPUNTOSDESKILL;
 			this.aumentarNivel();
 			this.modificarAtributos();
 			this.saludTope += SALUDTOPESUBIRN;
@@ -1061,7 +1060,7 @@ public abstract class Personaje extends MadreDeTodo implements Peleable, Seriali
 		salud = map.get("salud").intValue();
 		energia = map.get("energia").intValue();
 		defensa = map.get("defensa").intValue();
-		casta.setProbabilidadEvitarDaño(map.get("probEvitarDanio").doubleValue());
+		casta.setProbabilidadEvitarAtaque(map.get("probEvitarDanio").doubleValue());
 	}
 
 	/**

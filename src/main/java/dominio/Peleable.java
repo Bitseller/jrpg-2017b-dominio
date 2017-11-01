@@ -14,7 +14,7 @@ public interface Peleable {
 	 * @param daño Valor el cual se descontará de la defensa.
 	 * @return Retorna un entero con el daño causado al llamador.
 	 */
-	int serAtacado(int daño);
+	int serAtacado(int ataqueRecibido);
 
 	/**
 	 * Metodo implementado en Personaje
