@@ -1,4 +1,3 @@
-
 package dominio;
 /** La clase Hechicero es una casta de Personaje,
  * hereda de la clase Casta.

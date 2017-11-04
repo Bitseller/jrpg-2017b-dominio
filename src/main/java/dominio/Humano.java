@@ -1,4 +1,3 @@
-
 package dominio;
 
 /**La clase Humano hereda de la clase Personaje.

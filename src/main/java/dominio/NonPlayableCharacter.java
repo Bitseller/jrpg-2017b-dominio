@@ -1,4 +1,3 @@
-
 package dominio;
 
 /**
@@ -168,11 +167,12 @@ public class NonPlayableCharacter extends MadreDeTodo implements Peleable {
 	/**
 	 * Dependiendo de MyRandom.nextdouble() y NUMEROPARASERATACADO.
 	 * Puede disminuir el daño dependiendo del atributo DIVISORDEDEFENSA.
-	 * @param danio valor a ser descontado del atributo salud.
+	 * @param d valor a ser descontado del atributo salud.
 	 * @return Retorna 0 si el ataque no fue realizado con exito
 	 */
 	@Override
-	public final int serAtacado(int danio) {
+	public final int serAtacado(final int d) {
+		int danio = d;
 		if (this.getRandom().nextDouble() >= NUMEROPARASERATACADO) {
 			danio -= this.getDefensa() / DIVISORDEDEFENSA;
 			if (danio > 0) {

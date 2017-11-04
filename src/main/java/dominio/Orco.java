@@ -1,4 +1,3 @@
-
 package dominio;
 /**La clase Orco hereda de la clase Personaje.
  * Completa ciertos atributos que estaban declarados en

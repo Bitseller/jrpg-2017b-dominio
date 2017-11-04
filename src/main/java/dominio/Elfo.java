@@ -1,4 +1,3 @@
-
 package dominio;
 
 /** La clase Elfo hereda de la clase Personaje.

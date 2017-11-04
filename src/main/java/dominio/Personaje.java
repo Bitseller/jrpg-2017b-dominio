@@ -609,13 +609,13 @@ public abstract class Personaje extends MadreDeTodo implements Peleable, Seriali
 	 * del atributo salud es menor al valor del argumento daño, se procederá a
 	 * igualar el atributo salud a 0 y retornar el daño realziado (que será
 	 * igual a la salud antes de que esté en 0)
-	 * @param danio
+	 * @param d
 	 *            valor a descontarse del atributo salud
 	 * @return Retorna si el Personaje puede ser atacado.
 	 */
 	@Override
-	public final int serAtacado(int danio) {
-
+	public final int serAtacado(final int d) {
+		int danio = d;
 		if (this.getRandom().nextDouble() >= this.getCasta().getProbabilidadEvitarAtaque()) {
 			danio -= this.getDefensa();
 			if (danio > 0) {
@@ -638,11 +638,12 @@ public abstract class Personaje extends MadreDeTodo implements Peleable, Seriali
 	 * Si este daño es menor o igual a la salud del personaje se le quita daño
 	 * puntos de salud. Si el daño es mayor a la salud se establece la salud del
 	 * personaje en 0.
-	 * @param danio
+	 * @param d
 	 *            Daño causado al personaje
 	 * @return Retorna los puntos de vida quitados al personaje
 	 */
-	public final int serRobadoSalud(int danio) {
+	public final int serRobadoSalud(final int d) {
+		int danio = d;
 		danio -= this.getDefensa();
 		if (danio <= 0) {
 			return 0;
@@ -661,11 +662,12 @@ public abstract class Personaje extends MadreDeTodo implements Peleable, Seriali
 	 * total ejercido al personaje se le resta la defensa del mismo. Si este
 	 * daño es menor o igual a la energia del personaje se le resta al mismo,
 	 * sino se establece energia como 0.
-	 * @param danio
+	 * @param d
 	 *            Daño causado al personaje
 	 * @return Retorna los puntos de energia quitados al personaje.
 	 */
-	public final int serDesernegizado(int danio) {
+	public final int serDesernegizado(final int d) {
+		int danio = d;
 		danio -= this.getDefensa();
 		if (danio <= 0) {
 			return 0;
@@ -795,8 +797,8 @@ public abstract class Personaje extends MadreDeTodo implements Peleable, Seriali
 		if (this.getNivel() == NIVELMAXIMO) {
 			return;
 		}
-		while (this.getNivel() != NIVELMAXIMO 
-			&& (this.experiencia >= Personaje.getTablaDeNiveles()[this.getNivel() + 1] 
+		while (this.getNivel() != NIVELMAXIMO
+			&& (this.experiencia >= Personaje.getTablaDeNiveles()[this.getNivel() + 1]
 			+ acumuladorExperiencia)) 	{
 			acumuladorExperiencia += Personaje.getTablaDeNiveles()[this.getNivel() + 1];
 			this.puntosSkill += TRESPUNTOSDESKILL;

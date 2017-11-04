@@ -1,4 +1,3 @@
-
 package dominio;
 
 /** La clase Asesino es una casta de Personaje.

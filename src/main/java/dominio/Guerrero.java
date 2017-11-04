@@ -1,4 +1,3 @@
-
 package dominio;
 	/** La clase Guerrero es una casta de Personaje.
 	 * Hereda de la clase Casta.
