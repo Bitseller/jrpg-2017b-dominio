@@ -19,11 +19,11 @@ public abstract class Casta implements Serializable {
 	 * Numero que indica probabilidad.
 	 * Del personaje de evitar un ataque.
 	 */
-	private double probabilidadEvitarDaño;
+	private double probabilidadEvitarAtaque;
 	/**
 	 * Numero por el cual sera multiplicado el ataque.
 	 */
-	private double dañoCritico;
+	private double ataqueCritico;
 	/**
 	 * Probabilidad de evitar un golpe critico.
 	 */
@@ -47,8 +47,8 @@ public abstract class Casta implements Serializable {
 	 */
 	public Casta() {
 		this.probabilidadGolpeCritico = PROBEVITARGOLPC;
-		this.probabilidadEvitarDaño = PROBEVITARDANIO;
-		this.dañoCritico = DANIOCRITICO;
+		this.probabilidadEvitarAtaque = PROBEVITARDANIO;
+		this.ataqueCritico = DANIOCRITICO;
 	}
 	 /** El constructor asignará a cada atributo,
 	 * el valor correspondiente que será el
@@ -62,8 +62,8 @@ public abstract class Casta implements Serializable {
 	 */
 	public Casta(final double probCrit, final double evasion, final double danioCrit) {
 		this.probabilidadGolpeCritico = probCrit;
-		this.probabilidadEvitarDaño = evasion;
-		this.dañoCritico = danioCrit;
+		this.probabilidadEvitarAtaque = evasion;
+		this.ataqueCritico = danioCrit;
 	}
 	/**
 	 * Método abstracto que será implementado
@@ -138,8 +138,8 @@ public abstract class Casta implements Serializable {
 	/** Método que devuelve la probabilidadEvitarDaño.
 	 * @return probabilidadEvitarDaño
 	 */
-	public final double getProbabilidadEvitarDaño() {
-		return probabilidadEvitarDaño;
+	public final double getProbabilidadEvitarAtaque() {
+		return probabilidadEvitarAtaque;
 	}
 	/** Método void que sobreescribe el atributo
 	 * probabilidadEvitarDaño.
@@ -147,30 +147,30 @@ public abstract class Casta implements Serializable {
 	 * @param probabilidadEvitarDanio Valor que
 	 * tendra probabilidadEvitarDaño.
 	 */
-	public final void setProbabilidadEvitarDaño(final double probabilidadEvitarDanio) {
-		this.probabilidadEvitarDaño = probabilidadEvitarDanio;
+	public final void setProbabilidadEvitarAtaque(final double probabilidadEvitarDanio) {
+		this.probabilidadEvitarAtaque = probabilidadEvitarDanio;
 	}
 	/** Método que devuelve el dañoCritico.
 	 * @return dañoCritico
 	 */
-	public final double getDañoCritico() {
-		return dañoCritico;
+	public final double getAtaqueCritico() {
+		return ataqueCritico;
 	}
 	/** Método void que sobreescribe el atributo
 	 * dañoCritico.
 	 * con el valor que se ingresa por parámetro.
 	 * @param danioCritico Valor que tendra dañoCritico
 	 */
-	public final void setDañoCritico(final double danioCritico) {
-		this.dañoCritico = danioCritico;
+	public final void setAtaqueCritico(final double danioCritico) {
+		this.ataqueCritico = danioCritico;
 	}
 	/** Método void que aumenta el atributo
 	 * probabilidadEvitarDaño.
 	 * con el valor que se ingresa por parámetro.
 	 * @param bonus bonficador de evitar daño
 	 */
-	public final void aumentarEvitarDaño(final double bonus) {
-		this.probabilidadEvitarDaño += bonus;
+	public final void aumentarEvitarAtaque(final double bonus) {
+		this.probabilidadEvitarAtaque += bonus;
 	}
 
 }
