@@ -114,7 +114,7 @@ public Asesino(final double probCrit, final double evasion, final double danioCr
 		if (caster.getEnergia() >= ENERGIAMINIMA) {
 			caster.reducirEnergia(ENERGIAMINIMA);
 			if (this.getProbabilidadEvitarAtaque() + AUMENTARPROBEVITAR < PROBEVITARDANIO) {
-				this.setAtaqueCritico(AUMENTARPROBEVITAR);
+				this.aumentarEvitarAtaque(AUMENTARPROBEVITAR);
 			} else {
 				this.setProbabilidadEvitarAtaque(PROBEVITARDANIO);
 			}
