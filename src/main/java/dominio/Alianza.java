@@ -1,6 +1,7 @@
 package dominio;
 
 import java.util.LinkedList;
+
 /**La clase Alianza tiene como función agrupar a los jugadores.
  * mediante una LinkedList de Personajes
  */
